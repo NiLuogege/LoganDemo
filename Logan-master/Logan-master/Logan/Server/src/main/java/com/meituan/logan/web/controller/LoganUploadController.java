@@ -39,8 +39,8 @@ public class LoganUploadController {
     @PostMapping("/upload.json")
     @ResponseBody
     public LoganResponse<String> upload(HttpServletRequest request) throws IOException {
-        System.out.println("我进来了");
         LoganTaskModel model = RequestContextParser.parse(request);
+        System.out.println("model= "+model.toString());
         ResultEnum result = fileService.write(request.getInputStream(), model.getLogFileName());
         if (ResultEnum.SUCCESS != result) {
             return LoganResponse.exception(result.name());

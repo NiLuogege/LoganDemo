@@ -60,4 +60,22 @@ public class LoganTaskModel {
         dto.setStatus(TaskStatusEnum.NORMAL.getStatus());
         return dto;
     }
+
+    @Override
+    public String toString() {
+        return "LoganTaskModel{" +
+                "taskId=" + taskId +
+                ", amount='" + amount + '\'' +
+                ", appId='" + appId + '\'' +
+                ", unionId='" + unionId + '\'' +
+                ", platform=" + platform +
+                ", buildVersion='" + buildVersion + '\'' +
+                ", appVersion='" + appVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", logDate=" + logDate +
+                ", logFileName='" + logFileName + '\'' +
+                ", addTime=" + addTime +
+                ", status=" + status +
+                '}';
+    }
 }
