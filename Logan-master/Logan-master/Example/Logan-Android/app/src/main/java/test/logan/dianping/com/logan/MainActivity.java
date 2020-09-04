@@ -143,6 +143,7 @@ public class MainActivity extends Activity {
     }
 
     private void loganSendByDefault() {
+        Log.e("aaaaaa","loganSendByDefault");
         String buildVersion = "";
         String appVersion = "";
         try {
@@ -152,7 +153,7 @@ public class MainActivity extends Activity {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        final String url = "http://127.0.0.1:8080/logan/upload.json";
+        final String url = "http://192.168.1.142:8080/logan/upload.json";
         SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
         final String date = dataFormat.format(new Date(System.currentTimeMillis()));
         Logan.s(url, date, "1", "logan-test-unionid", "deviceId", buildVersion, appVersion, new SendLogCallback() {
