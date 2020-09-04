@@ -78,6 +78,7 @@ class LoganThread extends Thread {
         mMinSDCard = minSDCard;
         mEncryptKey16 = encryptKey16;
         mEncryptIv16 = encryptIv16;
+        Log.e("aaa= ","mPath= "+mPath);
     }
 
     void notifyRun() {
@@ -213,7 +214,7 @@ class LoganThread extends Thread {
             mFileDirectory = new File(mPath);
         }
 
-        if (!isDay()) {//不是同一天 就新创建一个 LoganProtocol
+        if (!isDay()) {//不是同一天，就重新打开一个文件
             long tempCurrentDay = Util.getCurrentTime();
             //save时间
             long deleteTime = tempCurrentDay - mSaveTime;
@@ -231,6 +232,7 @@ class LoganThread extends Thread {
         if (!mIsSDCard) { //如果小于50M（默认值） 不让再次写入
             return;
         }
+        //写
         mLoganProtocol.logan_write(action.flag, action.log, action.localTime, action.threadName,
                 action.threadId, action.isMainThread);
     }
