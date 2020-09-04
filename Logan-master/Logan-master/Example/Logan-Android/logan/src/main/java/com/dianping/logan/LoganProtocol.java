@@ -66,12 +66,14 @@ class LoganProtocol implements LoganProtocolHandler {
         }
     }
 
+    //初始化
     @Override
     public void logan_init(String cache_path, String dir_path, int max_file, String encrypt_key_16,
             String encrypt_iv_16) {
         if (mIsInit) {
             return;
         }
+        //创建 CLoganProtocol 并进行初始化
         if (CLoganProtocol.isCloganSuccess()) {
             mCurProtocol = CLoganProtocol.newInstance();
             mCurProtocol.setOnLoganProtocolStatus(mLoganProtocolStatus);
