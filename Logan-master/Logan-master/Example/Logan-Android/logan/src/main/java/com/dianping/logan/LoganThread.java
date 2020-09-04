@@ -174,6 +174,7 @@ class LoganThread extends Thread {
         return mCurrentDay < currentTime && mCurrentDay + LONG > currentTime;
     }
 
+    //删除过期的文件
     private void deleteExpiredFile(long deleteTime) {
         File dir = new File(mPath);
         if (dir.isDirectory()) {
@@ -212,7 +213,7 @@ class LoganThread extends Thread {
             mFileDirectory = new File(mPath);
         }
 
-        if (!isDay()) {
+        if (!isDay()) {//不是同一天 就新创建一个 LoganProtocol
             long tempCurrentDay = Util.getCurrentTime();
             //save时间
             long deleteTime = tempCurrentDay - mSaveTime;
