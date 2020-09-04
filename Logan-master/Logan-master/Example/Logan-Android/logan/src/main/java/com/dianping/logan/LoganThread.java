@@ -164,6 +164,11 @@ class LoganThread extends Thread {
         }
     }
 
+    /**
+     * 是否是同一天
+     *
+     * @return
+     */
     private boolean isDay() {
         long currentTime = System.currentTimeMillis();
         return mCurrentDay < currentTime && mCurrentDay + LONG > currentTime;
@@ -194,6 +199,11 @@ class LoganThread extends Thread {
         }
     }
 
+    /**
+     * 写入日志
+     *
+     * @param action
+     */
     private void doWriteLog2File(WriteAction action) {
         if (Logan.sDebug) {
             Log.d(TAG, "Logan write start");
@@ -211,13 +221,13 @@ class LoganThread extends Thread {
             mLoganProtocol.logan_open(String.valueOf(mCurrentDay));
         }
 
-        long currentTime = System.currentTimeMillis(); //每隔1分钟判断一次
+        long currentTime = System.currentTimeMillis(); //每隔1分钟判断 磁盘 是否还可以继续写入
         if (currentTime - mLastTime > MINUTE) {
             mIsSDCard = isCanWriteSDCard();
         }
         mLastTime = System.currentTimeMillis();
 
-        if (!mIsSDCard) { //如果大于50M 不让再次写入
+        if (!mIsSDCard) { //如果小于50M（默认值） 不让再次写入
             return;
         }
         mLoganProtocol.logan_write(action.flag, action.log, action.localTime, action.threadName,
@@ -337,6 +347,12 @@ class LoganThread extends Thread {
         return back;
     }
 
+    /**
+     * 如果 可用磁盘大小 大于 mMinSDCard 可继续写入
+     * 如果小于等于 就不能再写入
+     *
+     * @return 磁盘是否可写入
+     */
     private boolean isCanWriteSDCard() {
         boolean item = false;
         try {

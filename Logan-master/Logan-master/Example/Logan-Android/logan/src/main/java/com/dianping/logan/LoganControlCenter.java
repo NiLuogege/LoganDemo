@@ -83,10 +83,17 @@ class LoganControlCenter {
         return sLoganControlCenter;
     }
 
+    /**
+     * 写入操作
+     * @param log
+     * @param flag
+     */
     void write(String log, int flag) {
         if (TextUtils.isEmpty(log)) {
             return;
         }
+
+        //创建 writeAction 类型的 LoganModel
         LoganModel model = new LoganModel();
         model.action = LoganModel.Action.WRITE;
         WriteAction action = new WriteAction();
