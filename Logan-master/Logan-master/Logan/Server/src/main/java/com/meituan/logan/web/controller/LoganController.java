@@ -45,6 +45,7 @@ public class LoganController {
     @GetMapping("/latest.json")
     @ResponseBody
     public LoganResponse<List<LoganTaskModel>> latestReport() {
+        System.out.println("latest.json 我进来了");
         return LoganResponse.success(taskService.queryLatest(DEFAULT_LIMIT));
     }
 
