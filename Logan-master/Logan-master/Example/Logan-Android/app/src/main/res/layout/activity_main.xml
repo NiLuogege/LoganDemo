@@ -70,4 +70,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black" />
+
+
+    <Button
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/background_dark"
+        android:text="搞他16000行"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/test_bug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/background_dark"
+        android:text="让它崩溃吧"
+        android:textColor="@android:color/white" />
 </LinearLayout>

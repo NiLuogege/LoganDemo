@@ -71,6 +71,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Logan.w("啊哈哈哈哈66666", 2);
+                Logan.w("whatwaht", 3);
+                Logan.w("whatwaht", 3);
+                Log.d(TAG, "单条写入");
             }
         });
         batchBtn.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +98,39 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 loganSendByDefault();
+            }
+        });
+
+        findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        try {
+                            Log.d(TAG, "write log start");
+                            for (int i = 0; i < 400; i++) {
+                                Log.d(TAG, "times : " + i);
+                                Logan.w("测试一下崩溃的情况 " + i, 1);
+                                Thread.sleep(3);
+                            }
+                            Log.d(TAG, "write log end");
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
+            }
+        });
+
+        findViewById(R.id.test_bug).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "崩溃了");
+                Logan.w("崩溃了", 3);
+                Logan.w("崩溃了", 2);
+                int i = 1/0;
             }
         });
     }
@@ -143,7 +179,7 @@ public class MainActivity extends Activity {
     }
 
     private void loganSendByDefault() {
-        Log.e("aaaaaa","loganSendByDefault");
+        Log.e("aaaaaa", "loganSendByDefault");
         String buildVersion = "";
         String appVersion = "";
         try {

@@ -19,15 +19,20 @@ public class MyApplication extends Application {
         super.onCreate();
         initLogan();
         Logan.w("MyApplication onCreate", 3);
-        Logan.w("MyApplication onCreate", 3);
-        Logan.w("MyApplication onCreate", 3);
     }
 
     private void initLogan() {
+
+        String fileDir = getApplicationContext().getFilesDir().getAbsolutePath();
+        String externalFilesDir = getApplicationContext().getExternalFilesDir(null).getAbsolutePath();
+        Log.e("aaaaaa","fileDir= "+fileDir+" externalFilesDir= "+externalFilesDir);
+
         LoganConfig config = new LoganConfig.Builder()
                 .setCachePath(getApplicationContext().getFilesDir().getAbsolutePath())
                 .setPath(getApplicationContext().getExternalFilesDir(null).getAbsolutePath()
                         + File.separator + FILE_NAME)
+//                .setMaxFile(3)//文件最大值
+//                .setDay(3)//最长存储多少天
                 .setEncryptKey16("0123456789012345".getBytes())
                 .setEncryptIV16("0123456789012345".getBytes())
                 .build();
