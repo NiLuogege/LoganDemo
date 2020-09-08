@@ -11,7 +11,11 @@ public class CORSFilter implements Filter {
 
     // This is to be replaced with a list of domains allowed to access the server
     //You can include more than one origin here
-    private final List<String> allowedOrigins = Arrays.asList("http://localhost:3000", "http://localhost:5001");
+    private final List<String> allowedOrigins = Arrays.asList(
+            "http://localhost:3000",
+            "http://localhost:5001",
+            "http://118.31.223.114:3000"
+    );
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -27,7 +31,7 @@ public class CORSFilter implements Filter {
 
             // Access-Control-Allow-Origin
             String origin = request.getHeader("Origin");
-            System.out.println("origin= "+origin);
+            System.out.println("origin= " + origin);
             response.setHeader("Access-Control-Allow-Origin", allowedOrigins.contains(origin) ? origin : "");
             response.setHeader("Vary", "Origin");
 
