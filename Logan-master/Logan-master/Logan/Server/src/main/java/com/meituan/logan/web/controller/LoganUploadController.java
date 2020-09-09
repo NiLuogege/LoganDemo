@@ -40,7 +40,7 @@ public class LoganUploadController {
     @ResponseBody
     public LoganResponse<String> upload(HttpServletRequest request) throws IOException {
         LoganTaskModel model = RequestContextParser.parse(request);
-        System.out.println("我热部署了么么");
+        System.out.println("我热部署了");
         System.out.println("model= "+model.toString());
         ResultEnum result = fileService.write(request.getInputStream(), model.getLogFileName());
         if (ResultEnum.SUCCESS != result) {
