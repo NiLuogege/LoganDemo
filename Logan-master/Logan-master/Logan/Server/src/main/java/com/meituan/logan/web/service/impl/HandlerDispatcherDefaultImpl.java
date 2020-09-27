@@ -22,13 +22,19 @@ public class HandlerDispatcherDefaultImpl implements HandlerDispatcher {
     @Resource
     private LoganTypeThreeHandler threeHandler;
     @Resource
+    private LoganTypeEightyFourHandler eightyFourHandler;
+
+    @Resource
     private LoganTypeUnknownHandler unknownHandler;
+
+
 
     @PostConstruct
     public void init() {
         handlers.put(LogTypeEnum.ONE, oneHandler);
         handlers.put(LogTypeEnum.TWO, twoHandler);
         handlers.put(LogTypeEnum.THREE, threeHandler);
+        handlers.put(LogTypeEnum.EIGHTY_FOUR, eightyFourHandler);
         handlers.put(LogTypeEnum.UNKNOWN, unknownHandler);
     }
 
